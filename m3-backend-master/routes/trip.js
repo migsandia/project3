@@ -1,13 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const Trip = require('../models/Trip');
+const Trip = require('../models/trip');
 
-const { isLoggedIn, isNotLoggedIn, validationLoggin } = require('../helpers/middlewares');
+const { isLoggedIn } = require('../helpers/middlewares');
 
-router.post('/trips', isLoggedIn(), (req, res, next) => {
-  console.log(req.body)
+// router.get('/', (req, res, next) => {
+
+//   console.log('tusmuerto')
+// }) 
+
+router.post('/', (req, res, next) => {
+  console.log("holaaaaa")
   const {title, description, itinerary, date, ageRange, numberPersons} = req.body;
+  
   const newTrip = {
     title, 
     description, 
@@ -17,8 +23,11 @@ router.post('/trips', isLoggedIn(), (req, res, next) => {
     numberPersons,
   }
   const newTripCreated = new Trip(newTrip);
+  res.status(200)
+  res.json(newTripCreated)
   return newTripCreated.save();
+
 });
 
 
-module.exports = router;
+module.exports = router

@@ -11,7 +11,7 @@ class TripService {
   create(data) {
     console.log(data)
     const { title, description, itinerary, date, ageRange, numberPersons } = data;
-    return this.trip.post('/trips', {title, description, itinerary, date, ageRange, numberPersons})
+    return this.trip.post('/trip', {title, description, itinerary, date, ageRange, numberPersons})
       .then(({ data }) => data);
   }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
+import tripService from '../lib/trip-services';
 
 class FormCreateTrip extends Component {
   state = {
@@ -20,7 +21,7 @@ class FormCreateTrip extends Component {
     const ageRange = this.state.ageRange;
     const numberPersons = this.state.numberPersons;
 
-    this.props.create({ title, description, itinerary, date, ageRange, numberPersons })
+    tripService.create({ title, description, itinerary, date, ageRange, numberPersons })
       .then(() => {
         this.setState({
           title:"",
@@ -72,4 +73,4 @@ class FormCreateTrip extends Component {
   }
 }
 
-export default withAuth(FormCreateTrip);
+export default FormCreateTrip;
