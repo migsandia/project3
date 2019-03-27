@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-
+import FormCreateTrip from '../components/FormCreateTrip'
 class TripsCreate extends Component {
   render() {
     return (
@@ -12,7 +12,7 @@ class TripsCreate extends Component {
         </p>
         </div>
       </div>
-        <h1>TripsCreate</h1>
+        <FormCreateTrip />
       </>
     );
   }

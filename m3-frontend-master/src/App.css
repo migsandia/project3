@@ -34,3 +34,7 @@
 .arrow-back{
   margin: 2vh 0 0 2vh;
 }
+
+.borderTest {
+  border: 1px solid black;
+}
