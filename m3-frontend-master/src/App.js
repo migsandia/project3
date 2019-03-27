@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
-import Navbar from './components/Navbar';
+import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Trips from './pages/Trips';
@@ -15,7 +15,7 @@ import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import AuthProvider from './providers/AuthProvider';
 import NoMatch from './pages/NoMatch';
-
+import './App.css';
 
 
 class App extends Component {
@@ -24,8 +24,9 @@ class App extends Component {
       <AuthProvider>
         <div className="container">
           <h1>Module 3 boilerplate</h1>
-          <Navbar />
+          
           <Switch>
+          <AnonRoute exact path="/" component={Home} />
             <AnonRoute exact path="/signup" component={Signup} />
             <AnonRoute exact path="/login" component={Login} />
             <PrivateRoute exact path="/trips" component={Trips} />

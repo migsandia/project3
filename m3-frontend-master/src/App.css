@@ -1,0 +1,28 @@
+.navbar {
+ background-color: white;
+ position: fixed;
+ bottom: 0;
+ width: 100%;
+ height: 11vh;
+ color: black;
+ border-top:1px solid grey;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+ align-items: center;
+}
+.navbar img {
+  width: 5vh;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-decoration-none{
+  text-decoration: none;
+}
+
+.color-black{
+  color: black;
+}

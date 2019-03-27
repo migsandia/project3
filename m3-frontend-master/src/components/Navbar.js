@@ -4,20 +4,40 @@ import { withAuth } from '../providers/AuthProvider';
 
 class Navbar extends Component {
   render() {
-    const { isLogged, user, logout } = this.props;
-    const { username } = user;
-    if (isLogged) {
-      return <div>
-        <p>username: { username }</p>
-        <p onClick={logout}>Logout</p>
-      </div>
-    } else {
-      return <div>
-        <Link to='/login'>Login</Link>
-        <Link to='/signup'>Signup</Link>
-      </div>
-    }
-  
+    return (
+      <nav className='navbar'>
+        <div className="text-align-center">
+          <Link to='/trips' className="text-decoration-none color-black">
+            <img src="/images/search.png" alt="search"></img>
+            <p>Explorar</p>
+          </Link>
+        </div>
+        <div className="text-align-center">
+          <Link to='/favs' className="text-decoration-none color-black">
+          <img src="/images/like.png" alt="like"></img>
+          <p>Guardados</p>
+          </Link>
+        </div>
+        <div className="text-align-center">
+          <Link to='/trips/new' className="text-decoration-none color-black">
+          <img src="/images/world.png" alt="world"></img>
+          <p>Crear viaje</p>
+          </Link>
+        </div>
+        <div className="text-align-center">
+          <Link to='/mytrips' className="text-decoration-none color-black">
+          <img src="/images/airplane.png" alt="airplane"></img>
+          <p>Mis viajes</p>
+          </Link>
+        </div>
+        <div className="text-align-center">
+          <Link to='/profile/me' className="text-decoration-none color-black">
+          <img src="/images/user.png" alt="user"></img>
+          <p>Perfil</p>
+          </Link>
+        </div>
+      </nav>
+    )
   }
 }
 
