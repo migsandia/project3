@@ -2,8 +2,28 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: String,
-  password: String,
+  username: {
+    type: String,
+    require : true
+  },
+  password: {
+    type: String,
+    require : true
+  },
+  name: {
+    type: String,
+    require : true
+  },
+  phoneNumber: {
+    type: Number,
+    require : true
+  },
+  imageUrl: {
+    type: String,
+  },
+  favTrips: {
+    type:[String]
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',
