@@ -34,9 +34,9 @@ class Signup extends Component {
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
-          <label>Password:</label>
+          <label>Dirección de correo electrónico:</label>
+          <input type="email" name="username" value={username} onChange={this.handleChange}/>
+          <label>Contraseña:</label>
           <input type="password" name="password" value={password} onChange={this.handleChange} />
           <input type="submit" value="Signup" />
         </form>
