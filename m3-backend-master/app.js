@@ -9,7 +9,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 require('dotenv').config();
-
 const auth = require('./routes/auth');
 const trip = require('./routes/trip');
 

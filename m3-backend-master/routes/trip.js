@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Trip = require('../models/trip');
+const Trip = require('../models/Trip');
 
 const { isLoggedIn } = require('../helpers/middlewares');
 
@@ -11,7 +11,6 @@ const { isLoggedIn } = require('../helpers/middlewares');
 // }) 
 
 router.post('/', (req, res, next) => {
-  console.log("holaaaaa")
   const {title, description, itinerary, date, ageRange, numberPersons} = req.body;
   
   const newTrip = {

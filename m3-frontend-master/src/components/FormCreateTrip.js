@@ -56,7 +56,7 @@ class FormCreateTrip extends Component {
           <label>Fecha:</label>
           <input type="date" name="date" value={date} onChange={this.handleChange} className="borderTest"/>
           <label>Rango de edad:</label>
-          <select name={ageRange}>
+          <select value={ageRange} name="ageRange" onChange={this.handleChange}>
             <option value="18-25">18-25</option>
             <option value="25-30">25-30</option>
             <option value="30-40">30-40</option>
@@ -65,7 +65,6 @@ class FormCreateTrip extends Component {
           </select>
           <label>Número máximo de personas:</label>
           <input type="number" name="numberPersons" value={numberPersons} onChange={this.handleChange} className="borderTest"/>
-          {/* <input type="date" name="ageRange" value={ageRange} onChange={this.handleChange} className="borderTest"/> */}
           <input type="submit" value="Crear viaje" />
         </form>
       </>
