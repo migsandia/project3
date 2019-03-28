@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import FormEditTrip from '../components/FormEditTrip';
 import tripService from '../lib/trip-services';
 
+
 class TripsEdit extends Component {
 
   state = {
     isLoading: true,
     data: {}
+
   }
 
   componentDidMount = () => {
@@ -28,10 +30,12 @@ class TripsEdit extends Component {
 
   render() {
     const { data,isLoading } = this.state;
+    
     switch (isLoading) {
       case true:
         return 'loading...';
       case false:
+        
         return (
           <div>
             <h1>TripsEdit</h1>

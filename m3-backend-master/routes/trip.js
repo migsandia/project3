@@ -84,8 +84,14 @@ router.get('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   const { id } = req.params;
-  const oneTrip = await Trip.findByIdAndDelete(id)
+  const deleteTrip = await Trip.findById(id)
+  if(deleteTrip.owner == req.session.currentUser._id){
+    const oneTrip = await Trip.findByIdAndDelete(id)
+  }else{
+    return;
+  }
   try {
+    // if()
     res.status(200);
     res.json({ message: 'Viaje eliminado' });
   } catch (error) {
