@@ -10,23 +10,35 @@ const { isLoggedIn } = require('../helpers/middlewares');
 //   console.log('tusmuerto')
 // }) 
 
-router.post('/', (req, res, next) => {
-  const {title, description, itinerary, date, ageRange, numberPersons} = req.body;
-  
-  const newTrip = {
-    title, 
-    description, 
-    itinerary, 
-    date, 
-    ageRange, 
-    numberPersons,
-  }
-  const newTripCreated = new Trip(newTrip);
-  res.status(200)
-  res.json(newTripCreated)
-  return newTripCreated.save();
+router.post('/', async (req, res, next) => {
+  console.log(req.body)
 
-});
+  const { title, description, itinerary, date, ageRange, numberPersons } = req.body;
+
+  if (!title || !description || !itinerary || !date || !ageRange || !numberPersons) {
+    res.status(400);
+    res.json({ message: 'Debes rellenar todos los campos para poder crear el viaje.' })
+    return;
+  }
+
+  try {
+    const newTrip = {
+      title,
+      description,
+      itinerary,
+      date,
+      ageRange,
+      numberPersons,
+    }
+    const newTripCreated = await new Trip(newTrip);
+    res.status(200)
+    res.json(newTripCreated)
+    newTripCreated.save();
+  } catch (error) {
+    next(error)
+  }
+}
+);
 
 
 module.exports = router

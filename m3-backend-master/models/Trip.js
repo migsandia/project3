@@ -32,7 +32,11 @@ const tripSchema = new Schema({
   favorites:{
     type: Number,
     require: true
-  }
+  },
+  itinerary:{
+    type: String,
+    require: true
+  },
   
 }, {
   timestamps: {

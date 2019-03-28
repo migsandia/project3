@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withAuth } from '../providers/AuthProvider';
 import tripService from '../lib/trip-services';
 
 class FormCreateTrip extends Component {
@@ -8,7 +7,7 @@ class FormCreateTrip extends Component {
     description:"",
     itinerary:"",
     date:"",
-    ageRange:"",
+    ageRange:"18-25",
     numberPersons:"",
   }
 
@@ -57,7 +56,7 @@ class FormCreateTrip extends Component {
           <input type="date" name="date" value={date} onChange={this.handleChange} className="borderTest"/>
           <label>Rango de edad:</label>
           <select value={ageRange} name="ageRange" onChange={this.handleChange}>
-            <option value="18-25">18-25</option>
+            <option value="18-25" >18-25</option>
             <option value="25-30">25-30</option>
             <option value="30-40">30-40</option>
             <option value="40-50">40-50</option>
