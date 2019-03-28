@@ -21,6 +21,10 @@ const tripSchema = new Schema({
     type: Date,
     require : true
   },
+  dateInit: {
+    type: Date,
+    require : true
+  },
   numberPersons:{
     type: Number,
     require : true

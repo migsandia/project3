@@ -9,10 +9,16 @@ class TripService {
   }
 
   create(data) {
-    console.log(data)
-    const { title, description, itinerary, date, ageRange, numberPersons } = data;
-    return this.trip.post('/trip', {title, description, itinerary, date, ageRange, numberPersons})
+    const { title, description, itinerary, date,dateInit, ageRange, numberPersons } = data;
+    return this.trip.post('/trip', { title, description, itinerary, date, dateInit,ageRange, numberPersons })
       .then(({ data }) => data);
+  }
+
+  // Llama a la Api para recoger todos los viajes
+  getAll() {
+    return this.trip.get('/trip')
+      .then(({ data }) => data);
+
   }
 
 }

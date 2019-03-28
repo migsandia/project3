@@ -1,0 +1,21 @@
+import React, { Component } from 'react';
+
+class TripCard extends Component {
+    render() {
+        console.log(this.props.data)
+    const {data} = this.props;
+        return (
+            <div>
+                
+                <img width="60px" src="http://tifositours.com/wp-content/uploads/2019/02/Barcelona.jpg" alt="image"/>
+                <p>{data.date}</p>
+                <p>{data.dateInit}</p>
+                <h1>{data.title}</h1>
+                <p>{data.itinerary}</p>
+                <p>{data.ageRange}</p>
+            </div>
+        );
+    }
+}
+
+export default TripCard;
