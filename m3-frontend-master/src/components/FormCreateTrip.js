@@ -33,6 +33,7 @@ class FormCreateTrip extends Component {
           ageRange: "",
           numberPersons: "",
         });
+        
       })
       .catch(error => console.log(error))
   }

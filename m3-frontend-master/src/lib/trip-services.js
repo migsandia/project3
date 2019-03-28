@@ -21,6 +21,13 @@ class TripService {
 
   }
 
+   // Llama a la Api para recoger un viaje especifico
+   getOne(id) {
+    return this.trip.get(`/trip/${id}`)
+      .then(({ data }) => data);
+
+  }
+
 }
 
 const tripService = new TripService();

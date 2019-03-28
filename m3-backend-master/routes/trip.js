@@ -56,5 +56,22 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+//Devuelve al FrontEnd un viaje
+router.get('/:id', async(req, res, next) => {
+  const {id}= req.params;
+  const oneTrip= await Trip.findById(id)
+  console.log(oneTrip)
+  try{
+    if(!oneTrip){
+      res.status(404);
+      res.json({mesage: 'La información del viaje no está disponible'})
+      return;
+    }
+    res.json(oneTrip);
+  }catch(error){
+    next(error);
+  }
+});
+
 
 module.exports = router
