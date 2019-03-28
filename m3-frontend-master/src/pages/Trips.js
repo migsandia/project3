@@ -25,7 +25,6 @@ class Trips extends Component {
   render() {
     // const { user } = this.props
     const { data } = this.state;
-    console.log(this.getTripList.data)
     return (
       <div>
         <h1>Viajes mas populares</h1>

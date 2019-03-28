@@ -13,9 +13,10 @@ router.post('/', async (req, res, next) => {
     res.json({ message: 'Debes rellenar todos los campos para poder crear el viaje.' })
     return;
   }
-
+console.log(req.session)
   try {
     const newTrip = {
+      owner: req.session.currentUser._id,
       title,
       description,
       itinerary,
@@ -49,9 +50,23 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+//Viajes creados por el usuario
+router.get('/mytrips', async (req, res, next) => {
+  const ownerTrips = await Trip.find({owner: req.session.currentUser._id})
+  try {
+    if (!ownerTrips) {
+      res.status(404);
+      res.json({ mesage: 'No hay viajes disponibles' })
+      return;
+    }
+    res.json(ownerTrips);
+  } catch (error) {
+    next(error);
+  }
+});
+
 //Devuelve al FrontEnd un viaje
 router.get('/:id', async (req, res, next) => {
-  console.log('estoy aqui')
   const { id } = req.params;
   const oneTrip = await Trip.findById(id)
   try {
@@ -81,7 +96,6 @@ router.delete('/:id', async (req, res, next) => {
 router.put('/:id/edit', async (req, res, next) => {
   const { id } = req.params;
   const { title, description, itinerary, date, dateInit, ageRange, numberPersons } = req.body;
-  console.log("estoy en el back")
   if (!title || !description || !itinerary || !date || !dateInit || !ageRange || !numberPersons) {
     res.status(400);
     res.json({ message: 'Debes rellenar todos los campos para poder crear el viaje.' })

@@ -26,6 +26,11 @@ class TripService {
       .then(({ data }) => data);
   }
 
+  getMyTrips() {
+    return this.trip.get('/trip/mytrips')
+      .then(({ data }) => data);
+  }
+
   // Llama a la Api para recoger un viaje especifico
   getOne(id) {
     console.log(id)

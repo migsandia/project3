@@ -1,53 +1,59 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 const tripSchema = new Schema({
-  title:{
+  owner: {
+    type: ObjectId,
+    ref: 'User',
+    require: true
+  },
+  title: {
     type: String,
-    require : true
+    require: true
   },
   description: {
     type: String,
-    require : true
+    require: true
   },
   imageUrl: {
     type: String,
   },
   ageRange: {
     type: String,
-    enum: ['18-25','25-30','30-40','40-50','+50']
+    enum: ['18-25', '25-30', '30-40', '40-50', '+50']
   },
   date: {
     type: Date,
-    require : true
+    require: true
   },
   dateInit: {
     type: Date,
-    require : true
+    require: true
   },
-  numberPersons:{
+  numberPersons: {
     type: Number,
-    require : true
+    require: true
   },
   route: {
     type: String,
-    require : true
+    require: true
   },
-  favorites:{
+  favorites: {
     type: Number,
     require: true
   },
-  itinerary:{
+  itinerary: {
     type: String,
     require: true
   },
-  
+
 }, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
-  },
-});
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
+    },
+  });
 
 const Trip = mongoose.model('Trip', tripSchema);
 
