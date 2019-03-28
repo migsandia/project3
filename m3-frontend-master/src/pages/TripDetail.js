@@ -26,7 +26,6 @@ class TripDetail extends Component {
         this.setState({
           message,
         })
-        console.log(message)
         this.props.history.goBack();
       })
   }

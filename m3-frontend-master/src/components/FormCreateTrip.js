@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import tripService from '../lib/trip-services';
+import { withRouter } from 'react-router-dom';
 
 class FormCreateTrip extends Component {
   state = {
@@ -23,17 +24,8 @@ class FormCreateTrip extends Component {
     const numberPersons = this.state.numberPersons;
 
     tripService.create({ title, description, itinerary, date, dateInit, ageRange, numberPersons })
-      .then(() => {
-        this.setState({
-          title: "",
-          description: "",
-          itinerary: "",
-          date: "",
-          dateInit:"",
-          ageRange: "",
-          numberPersons: "",
-        });
-        
+      .then((data) => {
+        this.props.history.push(`/trips/${data._id}`);
       })
       .catch(error => console.log(error))
   }
@@ -77,4 +69,4 @@ class FormCreateTrip extends Component {
   }
 }
 
-export default FormCreateTrip;
+export default  withRouter(FormCreateTrip);

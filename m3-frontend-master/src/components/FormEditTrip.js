@@ -25,16 +25,7 @@ class FormEditTrip extends Component {
 
     tripService.edit(this.props.trip._id,{ title, description, itinerary, date, dateInit, ageRange, numberPersons })
       .then(() => {
-        this.setState({
-          title: this.state.title,
-          description: this.state.description,
-          itinerary: this.state.itinerary,
-          date: this.state.date,
-          dateInit: this.state.dateInit,
-          ageRange: this.state.ageRange,
-          numberPersons: this.state.numberPersons
-        });
-
+        this.props.history.goBack();
       })
       .catch(error => console.log(error))
   }

@@ -12,7 +12,7 @@ class TripsCreate extends Component {
         </p>
         </div>
       </div>
-        <FormCreateTrip />
+        <FormCreateTrip history={this.props}/>
       </>
     );
   }

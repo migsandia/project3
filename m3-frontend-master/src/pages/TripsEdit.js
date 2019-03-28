@@ -21,21 +21,11 @@ class TripsEdit extends Component {
           data: data,
           isLoading: false
         })
-
+    
       })
 
   }
-  // handleEdit = (e) => {
-  //   e.preventDefault();
-  //   tripService.editOne(this.props.match.params.id, this.state)
-  //     .then(message => {
-  //       this.setState({
-  //         message,
-  //       })
-  //       console.log(message)
-  //       this.props.history.goBack();
-  //     })
-  // }
+
   render() {
     const { data,isLoading } = this.state;
     switch (isLoading) {
@@ -45,7 +35,7 @@ class TripsEdit extends Component {
         return (
           <div>
             <h1>TripsEdit</h1>
-            <FormEditTrip trip={data}/>
+            <FormEditTrip trip={data} history={this.props.history}/>
           </div>
         );
       default:
