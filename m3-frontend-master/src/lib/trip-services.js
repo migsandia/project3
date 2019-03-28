@@ -14,6 +14,12 @@ class TripService {
       .then(({ data }) => data);
   }
 
+  edit(id,data) {
+    console.log(id,data)
+    const { title, description, itinerary, date, dateInit, ageRange, numberPersons } = data;
+    return this.trip.put(`/trip/${id}/edit`, { title, description, itinerary, date, dateInit, ageRange, numberPersons })
+      .then(({ data }) => data);
+  }
   // Llama a la Api para recoger todos los viajes
   getAll() {
     return this.trip.get('/trip')
@@ -22,6 +28,7 @@ class TripService {
 
   // Llama a la Api para recoger un viaje especifico
   getOne(id) {
+    console.log(id)
     return this.trip.get(`/trip/${id}`)
       .then(({ data }) => data);
   }

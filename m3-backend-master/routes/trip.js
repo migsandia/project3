@@ -51,6 +51,7 @@ router.get('/', async (req, res, next) => {
 
 //Devuelve al FrontEnd un viaje
 router.get('/:id', async (req, res, next) => {
+  console.log('estoy aqui')
   const { id } = req.params;
   const oneTrip = await Trip.findById(id)
   try {
@@ -71,9 +72,38 @@ router.delete('/:id', async (req, res, next) => {
   const oneTrip = await Trip.findByIdAndDelete(id)
   try {
     res.status(200);
-    res.json({message: 'Viaje eliminado'});
+    res.json({ message: 'Viaje eliminado' });
   } catch (error) {
     next(error);
+  }
+});
+
+router.put('/:id/edit', async (req, res, next) => {
+  const { id } = req.params;
+  const { title, description, itinerary, date, dateInit, ageRange, numberPersons } = req.body;
+  console.log("estoy en el back")
+  if (!title || !description || !itinerary || !date || !dateInit || !ageRange || !numberPersons) {
+    res.status(400);
+    res.json({ message: 'Debes rellenar todos los campos para poder crear el viaje.' })
+    return;
+  }
+  const updateTrip = {
+    title,
+    description,
+    itinerary,
+    date,
+    dateInit,
+    ageRange,
+    numberPersons,
+  }
+
+  try {
+    const updateTripCreated = await Trip.findByIdAndUpdate(id, updateTrip, {new:true});
+    res.status(200)
+    res.json({message: 'Viaje editado'})
+    // newTripCreated.save();
+  } catch (error) {
+    next(error)
   }
 });
 
