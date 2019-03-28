@@ -5,19 +5,31 @@ import tripService from '../lib/trip-services';
 class TripDetail extends Component {
 
     state = {
-      data:[]
+      data:[],
+      message: "",
     }
  
   componentDidMount(){
    tripService.getOne(this.props.match.params.id)
      .then(data => {
-      console.log(data)
       this.setState({
         data: data
       })
     })
   }
-  
+
+  handleDelete = (e) => {
+    e.preventDefault();
+    tripService.deleteOne(this.props.match.params.id)
+    .then(message => {
+       this.setState({
+         message,
+      })
+      console.log(message)
+     this.props.history.goBack();
+    })
+  }
+
   render() {
     const {data} = this.state;
     return (
@@ -29,6 +41,7 @@ class TripDetail extends Component {
           <h1>{data.title}</h1>
           <p>{data.itinerary}</p>
           <p>{data.ageRange}</p>
+          <button onClick={this.handleDelete}>Eliminar</button>
         <Navbar />
       </div>
     );

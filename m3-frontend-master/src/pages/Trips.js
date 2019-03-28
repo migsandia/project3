@@ -16,16 +16,11 @@ class Trips extends Component {
   getTripList = async() => {
     await tripService.getAll()
       .then(data => {
-        console.log(data)
         this.setState({
           data: data
         })
       })
-      
   }
-
-  
-
   
   render() {
     // const { user } = this.props

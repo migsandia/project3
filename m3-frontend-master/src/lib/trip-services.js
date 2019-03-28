@@ -9,8 +9,8 @@ class TripService {
   }
 
   create(data) {
-    const { title, description, itinerary, date,dateInit, ageRange, numberPersons } = data;
-    return this.trip.post('/trip', { title, description, itinerary, date, dateInit,ageRange, numberPersons })
+    const { title, description, itinerary, date, dateInit, ageRange, numberPersons } = data;
+    return this.trip.post('/trip', { title, description, itinerary, date, dateInit, ageRange, numberPersons })
       .then(({ data }) => data);
   }
 
@@ -18,16 +18,18 @@ class TripService {
   getAll() {
     return this.trip.get('/trip')
       .then(({ data }) => data);
-
   }
 
-   // Llama a la Api para recoger un viaje especifico
-   getOne(id) {
+  // Llama a la Api para recoger un viaje especifico
+  getOne(id) {
     return this.trip.get(`/trip/${id}`)
       .then(({ data }) => data);
-
   }
 
+  deleteOne(id) {
+    return this.trip.delete(`/trip/${id}`)
+      .then(({ data }) => data);
+  }
 }
 
 const tripService = new TripService();

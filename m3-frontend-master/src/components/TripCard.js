@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 class TripCard extends Component {
     render() {
-        console.log(this.props.data)
     const {data} = this.props;
         return (
             <div>
